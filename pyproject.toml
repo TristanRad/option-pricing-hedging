@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "option-pricing-hedging"
+version = "0.1.0"
+description = "Vanilla and exotic option pricing (closed form, Monte Carlo, Crank-Nicolson PDE) and delta-hedging simulation under Black-Scholes."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Tristan Radenac" }]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "jupyter",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
