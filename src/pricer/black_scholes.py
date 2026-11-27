@@ -14,6 +14,10 @@ def d2(S0, K, T, r, q, sigma):
 
 
 def price_option(S0, K, T, r, q, sigma, option_type):
+
+    if T <= 0 or sigma <= 0:
+        raise ValueError("T and sigma should be positive")
+
     D1 = d1(S0, K, T, r, q, sigma)
     D2 = d2(S0, K, T, r, q, sigma)
 
@@ -25,5 +29,8 @@ def price_option(S0, K, T, r, q, sigma, option_type):
         P0 = K * np.exp(-r * T) * norm.cdf(-D2) - S0 * np.exp(-q * T) * norm.cdf(-D1)
         return P0
 
+
     else:
         raise ValueError("option_type doit être 'call' ou 'put'")
+
+
